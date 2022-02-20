@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <List  :list="list" :itemHeight="60"/>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import List from "@/components/List/List";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components:{
+    List
+  },
+  data(){
+    return {
+      list:[]
+    }
+  },
+  methods: {
+    //初始化列表 ，循环渲染 500条
+    initList(){
+      for(let i=0;i<500;i++){
+        this.list.push(i);
+      }
+    },
+
+  },
+  mounted() {
+    this.initList();
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  margin: 0;
+  padding: 0;
 }
+
 </style>
